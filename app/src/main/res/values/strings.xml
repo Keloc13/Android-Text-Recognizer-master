@@ -2,4 +2,8 @@
     <string name="app_name">Photo Demo</string>
     <string name="title_activity_photo_viewer">Photo Viewer</string>
     <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+
+    <string name="string_number_of_strings">Number of Strings in List: </string>
+    <string name="strings_list">List: </string>
+    <string name="Correct_address">URL: </string>
 </resources>

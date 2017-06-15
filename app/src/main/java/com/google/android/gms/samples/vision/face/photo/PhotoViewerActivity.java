@@ -31,13 +31,12 @@ import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class PhotoViewerActivity extends Activity {
     private static final String TAG = "PhotoViewerActivity";
 
-    List<String> inputStrings;
+    ArrayList<String> inputStrings;
 
     public PhotoViewerActivity()
     {
@@ -48,7 +47,7 @@ public class PhotoViewerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_viewer);
 
-        InputStream stream = getResources().openRawResource(R.raw.tester_pic_three);
+        InputStream stream = getResources().openRawResource(R.raw.android_test_large);
         Bitmap bitmap = BitmapFactory.decodeStream(stream);
 
         // A new face detector is created for detecting the face and its landmarks.
@@ -93,9 +92,10 @@ public class PhotoViewerActivity extends Activity {
 
         getStrings(faces);
 
-        for(int i = 0; i < inputStrings.size(); i++)
-            Toast.makeText(PhotoViewerActivity.this, inputStrings.get(i), Toast.LENGTH_SHORT).show();
+        Intent i = new RetrieveList().newIntent(PhotoViewerActivity.this, inputStrings);
+        startActivity(i);
     }
+
     void getStrings(SparseArray<TextBlock> tester)
     {
         for(int i = 0; i < tester.size(); i++)

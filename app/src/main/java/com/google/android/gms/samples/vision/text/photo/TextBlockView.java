@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.android.gms.samples.vision.face.photo;
+package com.google.android.gms.samples.vision.text.photo;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -27,10 +27,7 @@ import android.view.View;
 
 import com.google.android.gms.vision.text.TextBlock;
 
-/**
- * View which displays a bitmap containing a face along with overlay graphics that identify the
- * locations of detected facial landmarks.
- */
+
 public class TextBlockView extends View {
     private Bitmap mBitmap;
     private SparseArray<TextBlock> mText;
@@ -39,18 +36,14 @@ public class TextBlockView extends View {
         super(context, attrs);
     }
 
-    /**
-     * Sets the bitmap background and the associated face detections.
-     */
+
     void setContent(Bitmap bitmap, SparseArray<TextBlock> faces) {
         mBitmap = bitmap;
         mText = faces;
         invalidate();
     }
 
-    /**
-     * Draws the bitmap background and the associated face landmarks.
-     */
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -60,10 +53,7 @@ public class TextBlockView extends View {
         }
     }
 
-    /**
-     * Draws the bitmap background, scaled to the device size.  Returns the scale for future use in
-     * positioning the facial landmark graphics.
-     */
+
     private double drawBitmap(Canvas canvas) {
         double viewWidth = canvas.getWidth();
         double viewHeight = canvas.getHeight();
@@ -76,14 +66,6 @@ public class TextBlockView extends View {
         return scale;
     }
 
-    /**
-     * Draws a small circle for each detected landmark, centered at the detected landmark position.
-     * <p>
-     *
-     * Note that eye landmarks are defined to be the midpoint between the detected eye corner
-     * positions, which tends to place the eye landmarks at the lower eyelid rather than at the
-     * pupil position.
-     */
     private void drawFaceAnnotations(Canvas canvas, double scale) {
         Paint paint = new Paint();
         paint.setColor(Color.BLACK);

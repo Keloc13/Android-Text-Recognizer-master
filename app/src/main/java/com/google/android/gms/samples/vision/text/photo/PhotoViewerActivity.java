@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.android.gms.samples.vision.face.photo;
+package com.google.android.gms.samples.vision.text.photo;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -35,8 +35,9 @@ import java.util.ArrayList;
 
 public class PhotoViewerActivity extends Activity {
     private static final String TAG = "PhotoViewerActivity";
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
 
-    ArrayList<String> inputStrings;
+    private ArrayList<String> inputStrings;
 
     public PhotoViewerActivity()
     {
@@ -44,34 +45,22 @@ public class PhotoViewerActivity extends Activity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Calling the super onCreate first
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_viewer);
 
+        // This will take a picture from the resources raw in the APK and convert it to a bitmap
+        // which the TextRecognizer can reads to create a SparseArray of TextBlock
         InputStream stream = getResources().openRawResource(R.raw.android_test_large);
         Bitmap bitmap = BitmapFactory.decodeStream(stream);
-
-        // A new face detector is created for detecting the face and its landmarks.
-        //
-        // Setting "tracking enabled" to false is recommended for detection with unrelated
-        // individual images (as opposed to video or a series of consecutively captured still
-        // images).  For detection on unrelated individual images, this will give a more accurate
-        // result.  For detection on consecutive images (e.g., live video), tracking gives a more
-        // accurate (and faster) result.
-        //
-        // By default, landmark detection is not enabled since it increases detection time.  We
-        // enable it here in order to visualize detected landmarks.
-
         TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext())
                 .build();
 
-
         // Create a frame from the bitmap and run text detection on the frame.
         Frame frame = new Frame.Builder().setBitmap(bitmap).build();
-        SparseArray<TextBlock> faces = textRecognizer.detect(frame);
+        SparseArray<TextBlock> textBlockSparseArray = textRecognizer.detect(frame);
 
         if (!textRecognizer.isOperational()) {
-            Log.w(TAG, "Detector dependencies are not yet available.");
-
             // Check for low storage.  If there is low storage, the native library will not be
             // downloaded, so detection will not become operational.
             IntentFilter lowstorageFilter = new IntentFilter(Intent.ACTION_DEVICE_STORAGE_LOW);
@@ -84,23 +73,23 @@ public class PhotoViewerActivity extends Activity {
         }
 
         TextBlockView overlay = (TextBlockView) findViewById(R.id.faceView);
-        overlay.setContent(bitmap, faces);
+        overlay.setContent(bitmap, textBlockSparseArray);
 
         // Although detector may be used multiple times for different images, it should be released
         // when it is no longer needed in order to free native resources.
         textRecognizer.release();
+        getStrings(textBlockSparseArray);
 
-        getStrings(faces);
-
+        // Start the intent to get a List of Strings from the image
         Intent i = new RetrieveList().newIntent(PhotoViewerActivity.this, inputStrings);
         startActivity(i);
     }
 
+    // From SpareArray of TextBlock, add the value (String) of the the class inputStrings
     void getStrings(SparseArray<TextBlock> tester)
     {
         for(int i = 0; i < tester.size(); i++)
             inputStrings.add(tester.valueAt(i).getValue());
     }
-
 }
 

@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Photo Demo</string>
     <string name="title_activity_photo_viewer">Photo Viewer</string>
+<<<<<<< HEAD
     <string name="low_storage_error">Text detector dependencies cannot be downloaded due to low device storage</string>
 
     <string name="string_number_of_strings">Number of Strings in List: </string>
     <string name="strings_list">List: </string>
+=======
+    <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+>>>>>>> 5083bfd8ec943f155620ac3ae35da4766a233ca7
 </resources>

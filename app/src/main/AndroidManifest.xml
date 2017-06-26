@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="com.google.android.gms.samples.vision.text.photo"
     android:installLocation="auto" >
     <uses-feature android:name="android.hardware.camera"
@@ -8,13 +9,31 @@
     <application
         android:hardwareAccelerated="true"
         android:label="OcrTextDemo"
+=======
+    package="com.google.android.gms.samples.vision.face.photo"
+    android:installLocation="auto"
+    android:versionCode="1"
+    android:versionName="1" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:hardwareAccelerated="true"
+        android:label="FacePhotoDemo"
+>>>>>>> 5083bfd8ec943f155620ac3ae35da4766a233ca7
         android:allowBackup="true"
         android:icon="@drawable/icon">
 
         <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="face"/>
 
         <activity
+<<<<<<< HEAD
             android:name="com.google.android.gms.samples.vision.text.photo.PhotoViewerActivity"
+=======
+            android:name=".PhotoViewerActivity"
+>>>>>>> 5083bfd8ec943f155620ac3ae35da4766a233ca7
             android:icon="@drawable/icon"
             android:label="@string/title_activity_photo_viewer"
             android:theme="@android:style/Theme.Black.NoTitleBar"
@@ -24,6 +43,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".RetrieveList"
             android:parentActivityName=".PhotoViewerActivity">
@@ -31,6 +51,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".PhotoViewerActivity"/>
         </activity>
+=======
+>>>>>>> 5083bfd8ec943f155620ac3ae35da4766a233ca7
     </application>
 
 </manifest>

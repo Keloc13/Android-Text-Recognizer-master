@@ -3,7 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"  >
 
+<<<<<<< HEAD
     <com.google.android.gms.samples.vision.text.photo.TextBlockView
+=======
+    <com.google.android.gms.samples.vision.face.photo.TextBlockView
+>>>>>>> 5083bfd8ec943f155620ac3ae35da4766a233ca7
         android:id="@+id/faceView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

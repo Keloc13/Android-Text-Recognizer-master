@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/Android-Text-Recognizer-master-master.iml" filepath="$PROJECT_DIR$/Android-Text-Recognizer-master-master.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/Android-Text-Recognizer-master.iml" filepath="$PROJECT_DIR$/Android-Text-Recognizer-master.iml" />
+>>>>>>> 5083bfd8ec943f155620ac3ae35da4766a233ca7
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
